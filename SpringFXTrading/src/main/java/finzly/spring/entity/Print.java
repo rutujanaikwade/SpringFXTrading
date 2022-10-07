@@ -8,64 +8,54 @@ import javax.persistence.Table;
 @Table(name = "print" , catalog = "fxtrading")
 public class Print {
 	
-    int tradeNo;
-	String Name;
-	String CurrencyPair;
-	double Amount;    
-	double Rate;
-
+	private String name;
+	int tradeno=0;
+	private String currencypair;
+	private double amount;
+	private double rate;
+	
 	@Id
 	@Column
-		public int getTradeNo() {
-			return tradeNo;
-		}
-
-		public void setTradeNo(int tradeNo) {
-			this.tradeNo = tradeNo;
-		}
-
-		@Column
-		public String getName() {
-			return Name;
-		}
-
-		public void setName(String name) {
-			Name = name;
-		}
-
-		@Column
-		public String getCurrencyPair() {
-			return CurrencyPair;
-		}
-
-		public void setCurrencyPair(String currencyPair) {
-			CurrencyPair = currencyPair;
-		}
-
-		@Column
-		public double getAmount() {
-			return Amount;
-		}
-
-		public void setAmount(double d) {
-			Amount = d;
-		}
-
-		@Column
-		public double getRate() {
-			return Rate;
-		}
-
-		public void setRate(double iNR) {
-			Rate = iNR;
-		}
-
-		@Override
-		public String toString() {
-			return "BookTrades [tradeNo=" + tradeNo + ", Name=" + Name + ", CurrencyPair=" + CurrencyPair + ", Amount="
-					+ Amount + ", Rate=" + Rate + "]";
-		
-		}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Column
+	public int getTradeno() {
+		return tradeno;
+	}
+	public void setTradeno(int tradeno) {
+		this.tradeno = tradeno;
+	}
+	
+	
+	@Column
+	public String getCurrencypair() {
+		return currencypair;
+	}
+	public void setCurrencypair(String currencypair) {
+		this.currencypair = currencypair;
+	}
+	
+	@Column
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
+	@Column
+	public double getrate() {
+		return rate;
+	}
+	public void setrate(double rate) {
+		this.rate = rate;
+	}
+	
 
 
 	}

@@ -2,6 +2,7 @@ package finzly.spring.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,59 +16,54 @@ import finzly.spring.hibernateconfig.Config;
 @Repository
 public class Bookdao {
 	
-static int count =0;
-	
-	public static double Conversion(String string) {
-		final double INR = 66.00;
-		double USDINR;
-		double Amount = 0;
-		USDINR = INR * Amount;
-		return USDINR;
-	}
 
-	public String bookTrade(Book book) {
-		final double INR = 66.00;
+	public String bookedtrades(Book details) {
 		
-		if(book.getCurrencyPair().equalsIgnoreCase("usdinr")) {
+		final double rate = 66.00;
+
+		 int count = 0;
+		//currencyPair check
+		if(details.getCurrencypair().equalsIgnoreCase("usdinr")) {
 			//checking client want to get rate or not
-			if(book.getRate().equalsIgnoreCase("yes") ) {
+			if(details.getrate().equalsIgnoreCase("yes") ) {
 				//checking confirmation of client to book trade
-				 if(book.getBookingConformation().equalsIgnoreCase("yes")) {
+				 if(details.getBookingConfirmation().equalsIgnoreCase("yes")) {
 							count++;
-							
+		
 							SessionFactory factory = Config.getSession();
-					        Session session=factory.openSession();
-							Transaction transaction = session.beginTransaction();
+							Session session = factory.openSession();
+							Transaction tr = session.beginTransaction();
 							Print data = new Print();
-							data.setName(book.getName());
-							data.setAmount(Bookdao.Conversion(book.getAmount()));
-							data.setCurrencyPair(book.getCurrencyPair());
-							data.setRate(INR);
-							data.setTradeNo(count);
+							data.setName(details.getName());
+							data.setAmount(Conversion.USDTOINR(details.getAmount()));
+							data.setCurrencypair(details.getCurrencypair());
+							data.setrate(rate);
+							data.setTradeno(count);
 							session.save(data);
-							transaction.commit();
+							tr.commit();
 							session.close();
-							return "Trade for USDINR has been booked with rate 66.00 , The amount of Rs " + data.getAmount() +" will  be transferred in 2 working days to " +book.getName(); 
+					
+							return "Trade for USDINR has been booked with rate 66.00 , The amount of Rs " + data.getAmount() +" will  be transferred in 2 working days to " +details.getName(); 
 					}
-				 else if(book.getBookingConformation().equalsIgnoreCase("no"))
+				 else if(details.getBookingConfirmation().equalsIgnoreCase("no"))
 						return "booking cancelled";		
 				 else
-					 return "invalid input (bookingconfirmation) " + book.getBookingConformation() + " please give input as yes or no";
+					 return "invalid input (bookingconfirmation) " + details.getBookingConfirmation() + " please give input as yes or no";
 					
 			}
 			
-			else if(book.getRate().equalsIgnoreCase("no"))  {
-				if(book.getBookingConformation().equalsIgnoreCase("yes")) {
+			else if(details.getrate().equalsIgnoreCase("no"))  {
+				if(details.getBookingConfirmation().equalsIgnoreCase("yes")) {
 				
-					SessionFactory factory =  Config.getSession();
+					SessionFactory factory = Config.getSession();
 					Session session = factory.openSession();
 					Transaction tr = session.beginTransaction();
 					Print data = new Print();
-					data.setName(book.getName());
-					data.setAmount(Bookdao.Conversion(book.getAmount()));
-					data.setCurrencyPair(book.getCurrencyPair());
-					data.setRate(INR);
-					data.setTradeNo(count);
+					data.setName(details.getName());
+					data.setAmount(Conversion.USDTOINR(details.getAmount()));
+					data.setCurrencypair(details.getCurrencypair());
+					data.setrate(rate);
+					data.setTradeno(count);
 					session.save(data);
 					tr.commit();
 					session.close();
@@ -75,21 +71,21 @@ static int count =0;
 
 				return "Trade for USDINR has been booked with rate 66.00 , The amount of Rs " + data.getAmount() +" will  be transferred in 2 working days to " +data.getName(); 
 				}
-				else if(book.getBookingConformation().equalsIgnoreCase("no"))
+				else if(details.getBookingConfirmation().equalsIgnoreCase("no"))
 						return "booking cancelled";		
 				else
-						return "invalid input (bookingconfirmation) " + book.getBookingConformation() + " please give input as yes or no";
+						return "invalid input (bookingconfirmation) " + details.getBookingConfirmation() + " please give input as yes or no";
 			}	
 			else
-				return "invalid choice " + book.getRate() + " plese enter yes or no";
+				return "invalid choice " + details.getrate() + " plese enter yes or no";
 				
 			}
 			else 
-				return "invalid input "+ book.getCurrencyPair() + " only usdinr is allowed";
+				return "invalid input "+ details.getCurrencypair() + " only usdinr is allowed";
 	}
 
 			
-		public List<Print> printTrades() {
+		public List<Print> printtrades() {
 		SessionFactory factory = Config.getSession();
 		Session session =factory.openSession();
 		@SuppressWarnings("deprecation")
@@ -97,7 +93,6 @@ static int count =0;
 		List<Print> trades = criteria.list();
 		return trades;
 	}
-
 	
 	
 }

@@ -1,6 +1,7 @@
 package finzly.spring.controller;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,22 +15,26 @@ import finzly.spring.entity.Print;
 import finzly.spring.service.FXTradingService;
 
 @RestController
-@RequestMapping("FXTrading")
+@RequestMapping("/FXTrading")
 public class Springcontroller {
-	@Autowired
-		FXTradingService fs;
+	
+		@Autowired
+		FXTradingService	services ;
 		
 		@PostMapping("booktrade")
-		public String bookTrade(@RequestBody  Book details ) {
+		public String boketrade(@RequestBody Book data) {
+
+			String msg = services.booktrades(data);
+			return msg;
+		}	
 		
-		return fs.bookTrade(details);
+		@GetMapping("printtrade")
+		public List<Print> printtrade() {
+			List<Print> list =	services.printtrade();
+			return list;
 		}
-		
-		
-		@GetMapping("Printtrade")
-		public ArrayList<Print> Printtrade(){	
-			ArrayList<Print>list = fs.printtrade();
-		 return list;
-		}
+		static void comfirmation() {
+			
+		} 
 
 }

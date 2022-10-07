@@ -2,60 +2,49 @@ package finzly.spring.entity;
 
 public class Book {
 
-	int tradeNo;
-	String Name;
-	String CurrencyPair;
-	String Amount;    
-	String Rate;
-	String BookingConformation ;
-	
-	
-	
-	public String getBookingConformation() {
-		return BookingConformation;
-	}
-
-	public void setBookingConformation(String bookingConformation) {
-		BookingConformation = bookingConformation;
-	}
-
-	public int getTradeNo() {
-		return tradeNo;
-	}
-
-	public void setTradeNo(int tradeNo) {
-		this.tradeNo = tradeNo;
-	}
-
+	private String bookingConfirmation;
+	private String name;
+	private String currencypair;
+	private double amount;
+	private String rate;
+		
 	public String getName() {
-		return Name;
+		return name;
 	}
-
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+	
+	
+	
+	public String getBookingConfirmation() {
+		return bookingConfirmation;
+	}
+	public void setBookingConfirmation(String bookingConfirmation) {
+		this.bookingConfirmation = bookingConfirmation;
+	}
+	public String getCurrencypair() {
+		return currencypair;
+	}
+	public void setCurrencypair(String currencypair) {
+		this.currencypair = currencypair;
+	}
+	
+	
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
 
-	public String getCurrencyPair() {
-		return CurrencyPair;
+	public String getrate() {
+		return rate;
 	}
+	public void setrate(String rate) {
+		this.rate = rate;
+	}
+	
 
-	public void setCurrencyPair(String currencyPair) {
-		CurrencyPair = currencyPair;
-	}
-
-	public String getAmount() {
-		return Amount;
-	}
-
-	public void setAmount(String amount) {
-		Amount = amount;
-	}
-
-	public String getRate() {
-		return Rate;
-	}
-
-	public void setRate(String rate) {
-		Rate = rate;
-	}
 }

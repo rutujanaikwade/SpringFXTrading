@@ -1,32 +1,31 @@
 package finzly.spring.service;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import finzly.spring.dao.Bookdao;
-import finzly.spring.dao.Printdao;
+
 import finzly.spring.entity.Book;
 import finzly.spring.entity.Print;
 
 @Service
 public class FXTradingService {
 	@Autowired
-	Bookdao B;
+	Bookdao dao;
 	
-	@Autowired
-	Printdao P;
-	
-	public String bookTrade(Book details) {
-		return B.bookTrade(details);
+	public String booktrades(Book cd) {
 		
+		String msg =dao.bookedtrades(cd);
+		return msg;
 	}
+	
+	
 
-	public ArrayList<Print> printtrade() {
-		ArrayList<Print> list =P.printtrade();
+	public List<Print> printtrade() {
+		List<Print> list = dao.printtrades();
 		return list;
 	}
-
-
 }
