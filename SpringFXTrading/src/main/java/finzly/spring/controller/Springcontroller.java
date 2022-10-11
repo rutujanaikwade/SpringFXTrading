@@ -14,6 +14,7 @@ import finzly.spring.entity.Book;
 import finzly.spring.entity.Print;
 import finzly.spring.service.FXTradingService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/FXTrading")
 public class Springcontroller {
