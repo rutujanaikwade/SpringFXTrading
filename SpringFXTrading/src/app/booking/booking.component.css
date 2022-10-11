@@ -1,0 +1,26 @@
+.loginform{
+    text-align:center;   
+  }
+  
+  
+  .main-div {
+    background: black;
+    margin: 50px auto 20px;
+    max-width: 40%;
+   
+    padding: 30px 50px 30px 50px;
+    border-radius: 15px;
+  }
+  
+  .panel{ 
+    color: white;
+    border:0; 
+    border-radius: 0;
+    box-shadow:none; 
+    margin-bottom:0;
+    }
+    .toggle{
+      margin-left: 20px;
+  }
+
+ 

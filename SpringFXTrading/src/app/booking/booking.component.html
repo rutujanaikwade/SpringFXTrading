@@ -1,0 +1,118 @@
+  <div  class ="conatiner">
+
+   <div class="row">
+    <div class="col">
+      <div class ="bookform">
+        <div class="main-div">
+
+        <div class="panel">
+        <h1>Book</h1>
+        <hr>
+        <p class="text-success" 
+          style="font-weight: bold; color:yellowgreen;">
+          Please Enter Booking Information</p>                
+        </div>
+        <form #f="ngForm" (ngSubmit)="onBook(f)">
+
+        <div class="form-group">
+          
+          <div class="input-group-prepend">
+             <span
+                class="input-group-text"
+                style="font-size: 25px;margin-right: 15px; color: red">
+                <i class="fa fa-user"></i>
+          </span>
+                <input #name="ngModel" 
+                ngModel type="name" 
+                name="name" class="form-control" 
+                placeholder="Enter your name" >
+            </div>
+
+            <div class="alert alert-danger" 
+            *ngIf="name.touched &&!name.valid"> Please Enter the Name
+          
+              <div class="alert alert-danger" 
+              *ngIf="name.errors?.pattern"> Appropriate Name is required
+
+              </div>
+          </div>
+      </div>
+    
+
+      
+      <div class="form-group">
+        <div class="input-group-prepend">
+            <span
+            class="input-group-text"
+            style="font-size: 25px;margin-right: 10px; color: red"
+          >
+            <i class="fa fa-exchange"></i>
+          </span>
+        <input #currencypair="ngModel" 
+        ngModel type="currencypair"
+         name="currencypair" class="form-control" 
+         id="currencypair" placeholder="Enter currency pair" >
+        
+        </div>
+
+
+    </div>
+
+
+    <div class="form-group">
+      <div class="input-group-prepend">
+          <span
+          class="input-group-text"
+          style="font-size: 25px;margin-right: 10px; color: red"
+        >
+          <i class="fa fa-money"></i>
+        </span>
+      <input #amount="ngModel" 
+      ngModel type="amount"
+       name="amount" class="form-control" 
+       id="amount" placeholder="Enter amount" >
+      </div>
+
+      <div class="alert alert-danger" 
+      *ngIf="amount.touched &&!amount.valid"> Enter amount
+      </div>
+
+     </div>
+     <br>
+
+      <label style= "color: white; " for="">Do you want to Get Rate:</label><br>
+      <input #bookingconfirmation ="ngModel" 
+       ngModel type="bookingconfirmation" placeholder="Enter confirmation(yes or no)"
+   
+      name="bookingconfirmation" required>
+
+      <div class="alert alert-danger" 
+      *ngIf="bookingconfirmation.touched &&!bookingconfirmation.valid"> Enter yes or no
+
+      </div>
+            <div style="color: white">
+              <input type="radio"  name="Select" value="yes" #getrate="ngModel" [(ngModel)]="load.gatrate">Yes<br>
+              <input type="radio" name="Select" value="no"  #getrate="ngModel" [(ngModel)]="load.gatrate">No<br>
+            </div>
+            <br>
+        
+            <button [disabled]="!f.valid" value="book" class="btn btn-success">BOOK</button> &nbsp;     
+          
+          <button (click)="onCancel()" [disabled]="!f.valid" value="cancel"  class="btn btn-outline-danger">Cancel</button><br> <br>
+          <button (click)="onBack()"  class="btn btn-success">Back</button>
+          <br>
+           
+   
+        </form>
+
+    </div>
+    </div>
+    </div>
+  </div>
+</div>   
+
+
+    
+  
+  
+  

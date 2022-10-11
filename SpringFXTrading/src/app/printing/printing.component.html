@@ -1,0 +1,33 @@
+<p>printing works!</p>
+ <div class="container">
+    <select (change) ="onTableSizeChange($event)"
+       *ngFor="let size of tableSizes">{{size}}>
+    </select>
+  
+    <br>
+    <div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          
+          <th>Trade No</th>
+          <th>Name</th>
+          <th>Currency Pair</th>
+          <th>Amount</th>
+          <th>Rate</th>
+          
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of EmpData | paginate:{ itemsPerPage:tableSize,
+            currentPage:page,
+            totalItems:count}; let i = index ">
+            <td> {{item.tradeno}} </td>
+            <td> {{item.name}} </td>
+            <td> {{item.currencypair}} </td>
+            <td> {{item.amount}} </td>
+            <td> {{item.rate}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    </div>

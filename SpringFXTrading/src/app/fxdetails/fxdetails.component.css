@@ -1,0 +1,15 @@
+.front{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px ;
+}
+
+
+
+.card{
+    margin: 100px;
+    background-color: rgba(92, 83, 83, 0.995);
+    
+}
