@@ -7,9 +7,6 @@ import { stringify } from 'querystring';
   styleUrls: ['./fxdetails.component.css']
 })
 export class FxdetailsComponent implements OnInit {
-
-  name:string;
-  currencypair:string;
   
   constructor() { }
 
