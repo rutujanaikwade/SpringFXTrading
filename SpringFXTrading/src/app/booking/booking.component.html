@@ -90,11 +90,8 @@
       *ngIf="bookingconfirmation.touched &&!bookingconfirmation.valid"> Enter yes or no
 
       </div>
-            <div style="color: white">
-              <input type="radio"  name="Select" value="yes" #getrate="ngModel" [(ngModel)]="load.gatrate">Yes<br>
-              <input type="radio" name="Select" value="no"  #getrate="ngModel" [(ngModel)]="load.gatrate">No<br>
-            </div>
-            <br>
+           
+            <br> <br>
         
             <button [disabled]="!f.valid" value="book" class="btn btn-success">BOOK</button> &nbsp;     
           
