@@ -46,7 +46,17 @@ export class BookingComponent implements OnInit {
     })
   }
 
-
+onChange(myevent:any){
+  if(myevent.value==1){
+    this.amount=(<HTMLInputElement>document.getElementById("amount")).value;
+    this.name=(<HTMLInputElement>document.getElementById("name")).value;
+    console.log((<HTMLInputElement>document.getElementById("amount")).value)
+    console.log((<HTMLInputElement>document.getElementById("name")).value)
+    console.log((<HTMLInputElement>document.getElementById("currencypair")).value)
+    this.ratemsg='you are transferring INR '+(66.00*(+this.amount))+' to '+this.name +' and (Assuming the rate was 66.00)';
+   
+  }
+ }
  onCancel(){
   alert("Trade is Canceled. ");
 this.router.navigate(['']);
