@@ -81,7 +81,7 @@
      <br>
 
       <label style= "color: white; " for="">Do you want to Get Rate:</label><br>
-      <input #bookingconfirmation ="ngModel" 
+      <input #bookingconfirmation ="ngModel" (change)="onChange($event)"
        ngModel type="bookingconfirmation" placeholder="Enter confirmation(yes or no)"
    
       name="bookingconfirmation" required>
